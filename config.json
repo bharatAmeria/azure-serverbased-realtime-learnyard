@@ -1,0 +1,17 @@
+{
+    "DATA INGESTION": {
+      "ZIP FILE": "artifacts/data.zip",
+      "UNZIP DATA": "artifacts/data"
+    },
+
+    "CONFIG FOR MEMO": {
+      "DATA_PATH" : "artifacts/data",
+      "DB_FAISS_PATH" : "artifacts/vectorstore/db_faiss",
+      "MODEL_NAME" : "sentence-transformers/all-MiniLM-L6-v2"
+    },
+
+    "model_training": {
+    }
+    
+   }
+  

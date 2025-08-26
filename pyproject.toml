@@ -1,0 +1,11 @@
+[project]
+name = "azure-serverbased-realtime"
+version = "0.1.0"
+description = " "
+authors = [{name = "Bharat Aameriya", email = "bharataameriya@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "panda>=0.3.1",
+    "requests>=2.32.5",
+]

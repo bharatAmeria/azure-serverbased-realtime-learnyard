@@ -1,0 +1,10 @@
+1. Create repo, clone it in local
+2. Create Python virtual environement -> uv venv --python 3.10 .venv
+    2.1. Activate the environement -> source .venv/bin/activate
+    2.2. Install packages using -> uv add requests pandas
+    2.3. Install dependencies -> uv sync --frozen or uv sync 
+    2.4. See libraries and its dependencies -> uv tree
+    2.5. Run Python file using -> uv run <file_name>
+    2.6. Remove Python flask -> uv remove <package_name>
+3. Copy config.json, parms.json. Paste in the root directory.
+4. 
