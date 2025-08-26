@@ -18,7 +18,7 @@ list_of_files = [
     "config.json",
     "parms.json",
     "project_flow.txt",
-    "project.toml",
+    "pyproject.toml",
 ]
 
 for filepath in list_of_files:

@@ -1,0 +1,67 @@
+app/
+artifacts/
+.venv/
+logs/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# Jupyter Notebooks (optional)
+*.ipynb
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Hidden system files
+.DS_Store
+Thumbs.db
+
+# OS-level
+*.log
+
+# Git files
+.git/
+.gitignore
+
+# Unit test artifacts
+.pytest_cache/
+.tox/
+coverage/
+.coverage
+.cache
+
+# ML model artifacts and data
+artifacts/
+mlruns/
+mlflow.db
+*.pkl
+*.joblib
+*.h5
+
+# VSCode / IDE folders
+.vscode/
+.idea/
+
+# Docker-related
+Dockerfile
+docker-compose.yaml
+
+# Kubeflow compiled pipeline YAMLs
+!kubeflow_pipeline.yaml
+*.md
+.DS_Store
+train.py
+testEnvironment.py
+
+manifests/
+projectflow.txt 
+app/
