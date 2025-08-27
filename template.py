@@ -7,16 +7,16 @@ list_of_files = [
 
     f"{project_name}/__init__.py",
     f"{project_name}/components/__init__.py",
+    f"{project_name}/components/processing.py",
     f"{project_name}/config/__init__.py",
     f"{project_name}/exception/__init__.py",
     f"{project_name}/logger/__init__.py",
     f"{project_name}/pipeline/__init__.py",
-    f"{project_name}/main.py",
+    "main.py",
     ".dockerignore",
     ".env",
     ".project-root",
     "config.json",
-    "parms.json",
     "project_flow.txt",
     "pyproject.toml",
 ]

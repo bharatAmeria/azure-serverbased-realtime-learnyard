@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Corrector System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #000000;  /* Black background */
+            color: #ffffff;             /* White text for contrast */
+        }
+        .table {
+            background-color: #1a1a1a;  /* Dark table background */
+            color: #ffffff;
+        }
+        .table th, .table td {
+            color: #ffffff;
+        }
+        input.form-control {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+        }
+        input.form-control::placeholder {
+            color: #cccccc;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>AutoSuggest and Autocorrect System</h1>
+        <form method="POST" action="/suggest" class="mt-4">
+            <div class="form-group">
+                <label for="keyword">Enter a word:</label>
+                <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Type a word..." required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div id="suggestions" class="mt-4">
+            {% if suggestions %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Suggested Word</th>
+                        <th>Similarity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for suggestion in suggestions %}
+                    <tr>
+                        <td>{{ suggestion['Word'] }}</td>
+                        <td>{{ suggestion['Similarity'] | round(2) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

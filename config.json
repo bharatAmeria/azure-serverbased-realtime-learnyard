@@ -1,7 +1,11 @@
 {
-    "DATA INGESTION": {
-      "ZIP FILE": "artifacts/data.zip",
-      "UNZIP DATA": "artifacts/data"
+    "DATA_INGESTION": {
+      "ZIP_FILE": "artifacts/data.zip",
+      "UNZIP_DATA": "artifacts/data"
+    },
+
+    "DATA_PROCESSING": {
+      "RAW_DATA": "artifacts/raw_data/data.txt"
     },
 
     "CONFIG FOR MEMO": {

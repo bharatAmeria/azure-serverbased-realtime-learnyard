@@ -33,13 +33,7 @@ def load_config(path: Path = Path("config.json")) -> Box:
     """
     
     with open(path, "r") as f:
-        return Box(json.load(f))  # dot-accessible JSON config
-
-def load_constants(path: Path = Path("parms.json")) -> Box:
-    with open(path, "r") as f:
-        return Box(json.load(f))  # dot-accessible JSON config
-    
-PARMS = load_constants()
+        return Box(json.load(f)) 
 
 # Global config object
 CONFIG = load_config()

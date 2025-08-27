@@ -1,11 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "azure-serverbased-realtime"
+name = "src"
 version = "0.1.0"
-description = " "
-authors = [{name = "Bharat Aameriya", email = "bharataameriya@gmail.com"}]
+description = "Azure server-based realtime learning yard"
+authors = [
+    { name = "Bharat Aameriya", email = "bharataameriya@gmail.com" }
+]
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
-    "panda>=0.3.1",
-    "requests>=2.32.5",
+    "flask>=3.1.2",
+    "numpy>=1.26.0",
+    "pandas>=2.3.2",
+    "python-box>=7.3.2",
+    "requests>=2.32.3",
+    "textdistance>=4.6.3",
 ]
+
+[tool.setuptools]
+# no packages key here
+
+[tool.setuptools.packages.find]
+where = ["."]
