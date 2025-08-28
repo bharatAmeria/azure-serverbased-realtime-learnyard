@@ -14,4 +14,68 @@
 7. Add data in the artifacts/raw_data . From where we read our data for processing and training.
    (If you want remote storage as data ingestion. You cahnge path in config.json file.)
 8. Copy main.py file project root directory. Run file main.py to check if components are working or not.
-9. 
+9. Make dircetory named app. Copy code file in the folder.
+10. Run app/app.py to check. If our web app working or not.
+11. Now launch uour docker desktop. In terminal run the below command. In your terminal.
+        docker buildx build --platform linux/amd64 -t <docker username>/myflaskapp:latest .
+        docker push <docker username>/myflaskapp:latest
+12. Test your docker image -> 
+        docker pull <docker username>/myflaskapp:latest
+        docker run -p 5000:5000 <docker username>/myflaskapp:latest
+13. Now SignIn your Azure account. To configure our VM.
+    
+    a. In the Azure Portal, search for Virtual Machines in the search bar.
+    b. Click + Create → Azure Virtual Machine.
+    c. Subscription: Select your active subscription.
+    d. Resource Group: Create a new one (e.g., flask-rg) or use an existing one.
+    e. Virtual Machine Name: e.g., flask-vm.
+    f. Region: Choose nearest to you (e.g., Central India, East US).
+    g. Availability Options: Leave default (No infrastructure redundancy).
+    h. Image: Select Ubuntu Server 22.04 LTS.
+    i. Size: Choose at least Standard_B1s (cheap) or Standard_B2s (more powerful).
+    j. Authentication Type:
+        SSH public key (recommended, secure and We use this method in thie project.) 
+            Or
+        Username: e.g., azureuser.
+        Generate or upload your SSH key.
+    k. Configure Networking: 
+        - Virtual Network & Subnet: Auto-created is fine.
+        - Public IP: Leave default (so you can access via internet).
+        - NIC network security group (firewall rules):
+            Allow SSH (22)
+            Allow HTTP (80)
+            (Optional) Allow HTTPS (443)
+    l. OS Disk: Standard SSD is fine.
+       Leave other settings default unless you need something special.
+    m. Review & Create
+        - Click Review + Create.
+        - Validate settings.
+        - Click Create.
+
+14. Connect to Your VM: 
+        SSH into it: If you use SSH Public Key. Then there is public key file downloaded.
+        - copy that file and save in your project root directory. In .ssh folder (remeber to add your .ssh folder in the .gitignore file.)
+        - To connect: 
+            ssh azureuser@<VM_PUBLIC_IP>
+            chmod 600 .ssh/<your Key>
+            ssh -i .ssh/my_key azureuser@<VM_PUBLIC_IP>
+
+15. Once You connected to your VM remotely. Install Docker.
+        sudo apt update
+        sudo apt install -y docker.io
+        sudo systemctl start docker
+        sudo systemctl enable docker
+        sudo usermod -aG docker $USER
+
+        sudo groupadd docker
+        sudo usermod -aG docker azureuser
+        newgrp docker
+
+        sudo docker pull bharat9838/myflaskapp:latest2
+        docker run -d -p 80:5000 --name flask-app --restart unless-stopped bharat9838/myflaskapp:latest
+
+16. Now hit the url: http://<VM_PUBLIC_IP>/
+
+-------------------- Delete Resources -------------------------
+
+az group delete --name <RESOURCE_GROUP_NAME> --yes --no-wait
