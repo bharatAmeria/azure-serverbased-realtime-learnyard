@@ -10,7 +10,7 @@ jobs:
   build-linux:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
-    name: Build and Push Linux Images
+    name: Build and Push Linux Multi-Arch Image
 
     env:
       IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/flask-app
@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
@@ -32,39 +32,16 @@ jobs:
     - name: Build and push multi-arch Linux image
       uses: docker/build-push-action@v5
       with:
-        context: .
+        context: ./app
+        file: ./app/Dockerfile
         push: true
         platforms: linux/amd64,linux/arm64
         tags: |
           ${{ env.IMAGE_NAME }}:${{ env.VERSION }}
           ${{ env.IMAGE_NAME }}:latest
 
-    - name: Linux deployment success message
+    - name: Deployment success message
       run: |
-        echo "✅ Linux Docker image pushed: $IMAGE_NAME:latest and $IMAGE_NAME:$VERSION"
-
-
-  build-windows:
-    needs: build-linux
-    runs-on: [self-hosted, windows, docker]
-    name: Build and Push Windows Image
-
-    env:
-      IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/flask-app
-      VERSION: v1.0.${{ github.run_number }}
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-
-    - name: Build and push Windows image
-      run: |
-        docker build -f Dockerfile.windows -t $IMAGE_NAME:windows-${{ github.run_number }} .
-        docker push $IMAGE_NAME:windows-${{ github.run_number }}
-        echo "✅ Windows Docker image pushed: $IMAGE_NAME:windows-${{ github.run_number }}"
+        echo "✅ Multi-arch Linux Docker image pushed:"
+        echo "   → $IMAGE_NAME:latest"
+        echo "   → $IMAGE_NAME:$VERSION"
