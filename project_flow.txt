@@ -75,6 +75,9 @@
         docker run -d -p 80:5000 --name flask-app --restart unless-stopped bharat9838/myflaskapp:latest
 
 16. Now hit the url: http://<VM_PUBLIC_IP>/
+17. create a folder .github/ for our github actions workflow. Copy and the file in the folder.
+(We automate the whole same process tile docker image.)
+18. Do final commit.
 
 -------------------- Delete Resources -------------------------
 
