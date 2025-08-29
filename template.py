@@ -4,14 +4,19 @@ from pathlib import Path
 project_name = "src"
 
 list_of_files = [
-
+    ".github/workflows/docker_image.yaml",
+    ".github/workflows/pipeline.yaml",
+    "app/templates/index.html",
+    "app/__init__.py",
+    "app/app.py",
+    "app/Dockerfile",
+    "app/requirements.txt",
     f"{project_name}/__init__.py",
     f"{project_name}/components/__init__.py",
     f"{project_name}/components/processing.py",
     f"{project_name}/config/__init__.py",
     f"{project_name}/exception/__init__.py",
     f"{project_name}/logger/__init__.py",
-    f"{project_name}/pipeline/__init__.py",
     "main.py",
     ".dockerignore",
     ".env",
